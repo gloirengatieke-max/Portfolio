@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murielle Gloire | Portfolio Explore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+   <style>
+    /* VARIABLES DE COULEUR VIBRANTES */
+    :root {
+        --deep-purple: #322582; /* Améthyste Profond */
+        --neon-purple: #805ad5; /* Violet Néon */
+        --gold-tech: #e9b949;  /* Or Tech (pour la réussite) */
+        --text-light: #f4f7f6;
+        --text-dark: #1a202c;
+        --glass-bg: rgba(255, 255, 255, 0.03); /* Base Glassmorphism */
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #0d1117; /* Fond sombre profond pour le contraste tech */
+        color: var(--text-light);
+        overflow-x: hidden;
+    }
+
+    /* NAVBAR effet Verre Dépoli High-Tech */
+    .navbar {
+        background: rgba(13, 17, 23, 0.7) !important;
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--gold-tech) !important;
+    }
+
+    /* HERO SECTION : Dégradé Néon & Mystère */
+    .hero {
+        background: radial-gradient(circle at center, var(--neon-purple) 0%, var(--deep-purple) 70%, #0d1117 100%);
+        color: white;
+        padding: 150px 0 180px;
+        clip-path: ellipse(150% 100% at 50% 0%);
+        position: relative;
+    }
+    /* Ajout d'une texture discrète */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 30V0h4v24h24v4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        opacity: 0.3;
+    }
+
+    .hero h1 {
+        font-weight: 800;
+        font-size: 4.2rem;
+        letter-spacing: -3px;
+        background: linear-gradient(to right, #fff 0%, var(--gold-tech) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* SECTION INVESTIGATION : La "Boîte Noire" en Glassmorphism SOMBRE */
+    .investigation-card {
+        background: rgba(26, 32, 44, 0.6);
+        border-radius: 40px;
+        padding: 50px;
+        margin-top: -100px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        border: 2px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(20px);
+    }
+    .investigation-card h3 {
+        color: var(--gold-tech);
+        font-weight: 700;
+    }
+    .investigation-card strong {
+        color: var(--gold-tech);
+    }
+    /* Les icônes reçoivent la couleur néon */
+    .icon-box {
+        width: 80px;
+        height: 80px;
+        background: rgba(128, 90, 213, 0.1);
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: var(--neon-purple);
+        font-size: 2.2rem;
+        border: 1px solid rgba(128, 90, 213, 0.3);
+        transition: 0.3s;
+    }
+    .investigation-card .col-md-4:hover .icon-box {
+        transform: rotate(10deg);
+        background: rgba(128, 90, 213, 0.2);
+    }
+
+    /* SECTION PROJETS : Mise en scène de l'Œuvre */
+    .project-section {
+        background: rgba(26, 32, 44, 0.4);
+        border-radius: 50px;
+        padding: 60px;
+        border: 1px solid rgba(255,255,255,0.03);
+    }
+    .project-section h2 {
+        color: white;
+        background: linear-gradient(to right, #fff 0%, var(--neon-purple) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    video {
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(128, 92, 231, 0.3);
+        background: #000;
+        border: 4px solid rgba(128, 92, 231, 0.1);
+    }
+    /* La boîte Mandarine style "Tech Gold" */
+    .mandarine-box {
+        padding: 30px;
+        background: rgba(233, 185, 73, 0.05);
+        border-radius: 30px;
+        border: 1px solid rgba(233, 185, 73, 0.1);
+    }
+    .mandarine-box h3 { color: var(--gold-tech); }
+
+    /* BOUTONS modernisés */
+    .btn-modern {
+        background: linear-gradient(135deg, var(--neon-purple) 0%, var(--deep-purple) 100%);
+        color: white;
+        border-radius: 50px;
+        padding: 15px 40px;
+        font-weight: 700;
+        border: none;
+        box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+        transition: 0.4s;
+    }
+    .btn-modern:hover {
+        background: linear-gradient(135deg, var(--gold-tech) 0%, #d4a73b 100%);
+        color: var(--text-dark);
+        transform: translateY(-3px) scale(1.02);
+    }
+    .btn-outline-primary {
+        color: var(--neon-purple);
+        border-color: var(--neon-purple);
+    }
+    .btn-outline-primary:hover {
+        background: var(--neon-purple);
+        border-color: var(--neon-purple);
+        color: white;
+    }
+
+    /* SECTION ÉQUIPE : Les "Tech Cards" */
+    .card-collab {
+        border: none;
+        border-radius: 30px;
+        background: rgba(26, 32, 44, 0.5);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.03);
+    }
+    .card-collab:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(128, 92, 231, 0.2);
+        border: 1px solid rgba(128, 92, 231, 0.2);
+    }
+    .card-collab img {
+        border: 4px solid rgba(255, 255, 255, 0.05);
+        transition: 0.3s;
+    }
+    .card-collab:hover img {
+        border-color: var(--neon-purple);
+    }
+
+    /* FOOTER sombre et chic */
+    footer {
+        background: #0d1117;
+        color: #ecf0f1;
+        padding: 70px 0;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    footer h4 { color: var(--gold-tech); }
+</style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">NMG<span style="color: var(--gold-tech);">.</span></a>
+            <div class="ms-auto">
+                <a href="#projets" class="btn btn-sm btn-outline-primary rounded-pill px-4">Mes Travaux</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero text-center">
+        <div class="container">
+            <img src="IMG_20230812_175324.jpg" alt="Murielle Gloire" class="rounded-circle mb-4 border border-white border-4 shadow-lg" style="width: 150px; height: 150px; object-fit: cover;">
+            <h1>NGATSEKE Murielle Gloire</h1>
+            <p class="lead opacity-90">Exploratrice de l'irrésolvable & Créatrice Numérique</p>
+        </div>
+    </header>
+
+    <section class="container mb-5">
+        <div class="investigation-card">
+            <div class="row g-4 text-center">
+                <div class="col-lg-12 mb-4">
+                    <h3 class="fw-bold mb-3">Ma Philosophie : L'Analyse et l'Investigation</h3>
+                    <p class="mx-auto" style="max-width: 800px;">
+                        Débutante passionnée en <strong>Python</strong>, je vois la programmation comme une enquête. 
+                        Des mystères du problème <strong>$P = NP$</strong> aux "Enquêtes Impossibles", j'aime explorer l'irrésolvable. 
+                        Entre deux lignes de code, j'écris et je prête ma voix à des récits imaginaires.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box"><i class="bi bi-search"></i></div>
+                    <h5 class="fw-bold">Science</h5>
+                    <p class="small text-muted">Passionnée par la complexité algorithmique.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box"><i class="bi bi-mic"></i></div>
+                    <h5 class="fw-bold">Interprétation</h5>
+                    <p class="small text-muted">Changements de voix et jeux d'actrice.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box"><i class="bi bi-pencil-square"></i></div>
+                    <h5 class="fw-bold">Écriture</h5>
+                    <p class="small text-muted">Récits littéraires et scénarios créatifs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-5 py-5" id="projets">
+        <div class="project-section">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="fw-bold mb-4">L'Amour en trompe-l'œil</h2>
+                    <video width="100%" controls>
+                        <source src="L'amour en trompe-l'oeil vidéo.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                </div>
+                <div class="col-lg-5 ps-lg-5 mt-4 mt-lg-0">
+                   <div class="mandarine-box">
+                        <h3 class="fw-bold">Projet Mandarine</h3>
+                        <p class="text-muted">Exemple de conception de site vitrine réalisé avec soin pour explorer le design web.</p>
+                        <a href="Aide  projet/Mandarine.html" class="btn btn-modern w-100">Visiter Mandarine</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-5 py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Mes Collaborateurs</h2>
+            <div style="width: 50px; height: 4px; background: var(--primary-color); margin: 10px auto;"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card-collab p-4 text-center shadow-sm">
+                    <img src="WhatsApp Image 2026-05-08 at 11.56.10 (1).jpeg" class="rounded-circle mb-3 mx-auto" style="width: 90px; height: 90px; object-fit: cover;">
+                    <h6 class="fw-bold">Daniel SAMBA</h6>
+                    <p class="small text-muted">Analyste Programmeur</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">Portfolio</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-collab p-4 text-center shadow-sm">
+                    <img src="WhatsApp Image 2026-05-08 at 11.56.10 (2).jpeg" class="rounded-circle mb-3 mx-auto" style="width: 90px; height: 90px; object-fit: cover;">
+                    <h6 class="fw-bold">Gedéon MBENZA</h6>
+                    <p class="small text-muted">Spécialiste BDD</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">Portfolio</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-collab p-4 text-center shadow-sm">
+                    <img src="https://via.placeholder.com/90" class="rounded-circle mb-3 mx-auto" style="width: 90px; height: 90px; object-fit: cover;">
+                    <h6 class="fw-bold">Jonathan MOTSARA</h6>
+                    <p class="small text-muted">Développeur</p>
+                    <a href="https://verdugo-37.github.io/MOTSARA-NICK-JONATHAN/" class="btn btn-sm btn-outline-primary rounded-pill">Portfolio</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-collab p-4 text-center shadow-sm">
+                    <img src="WhatsApp Image 2026-05-08 at 23.03.39.jpeg" class="rounded-circle mb-3 mx-auto" style="width: 90px; height: 90px; object-fit: cover;">
+                    <h6 class="fw-bold">Vertu MOUKANI</h6>
+                    <p class="small text-muted">Designer UI/UX</p>
+                    <a href="https://vertumoukani47-boop.github.io/Portfolio-devoir/" class="btn btn-sm btn-outline-primary rounded-pill">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <h4 class="fw-bold mb-4">NMG<span style="color:var(--gold-tech);">.</span></h4>
+            <p>&copy; 2026 Murielle Gloire NGATSEKE. Réalisé avec passion.</p>
+            <p class="small opacity-50">L1 Informatique de Gestion - ESGAE</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
